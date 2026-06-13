@@ -1,6 +1,6 @@
-package com.example.addon.modules;
+package com.cactus.fthelper.modules;
 
-import com.example.addon.AddonTemplate;
+import com.cactus.fthelper.AddonTemplate;
 import meteordevelopment.meteorclient.events.render.Render3DEvent;
 import meteordevelopment.meteorclient.renderer.ShapeMode;
 import meteordevelopment.meteorclient.settings.ColorSetting;

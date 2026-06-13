@@ -1,6 +1,6 @@
-package com.example.addon.hud;
+package com.cactus.fthelper.hud;
 
-import com.example.addon.AddonTemplate;
+import com.cactus.fthelper.AddonTemplate;
 import meteordevelopment.meteorclient.systems.hud.HudElement;
 import meteordevelopment.meteorclient.systems.hud.HudElementInfo;
 import meteordevelopment.meteorclient.systems.hud.HudRenderer;

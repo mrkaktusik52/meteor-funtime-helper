@@ -1,8 +1,8 @@
-package com.example.addon;
+package com.cactus.fthelper;
 
-import com.example.addon.commands.CommandExample;
-import com.example.addon.hud.HudExample;
-import com.example.addon.modules.ModuleExample;
+import com.cactus.fthelper.commands.CommandExample;
+import com.cactus.fthelper.hud.HudExample;
+import com.cactus.fthelper.modules.ModuleExample;
 import com.mojang.logging.LogUtils;
 import meteordevelopment.meteorclient.addons.GithubRepo;
 import meteordevelopment.meteorclient.addons.MeteorAddon;

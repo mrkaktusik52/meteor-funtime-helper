@@ -1,11 +1,11 @@
 {
   "schemaVersion": 1,
-  "id": "addon-template",
+  "id": "meteor-funtime-helper",
   "version": "${version}",
   "name": "Addon Template",
-  "description": "An addon template for Meteor Client addons.",
+  "description": " An addon for the Meteor Client with simplifications for FunTime",
   "authors": [
-    "seasnail"
+    "MrKaktusik_52"
   ],
   "contact": {
     "sources": "https://github.com/MeteorDevelopment/meteor-addon-template"
@@ -14,11 +14,11 @@
   "environment": "client",
   "entrypoints": {
     "meteor": [
-      "com.example.addon.AddonTemplate"
+      "com.cactus.fthelper.AddonTemplate"
     ]
   },
   "mixins": [
-    "addon-template.mixins.json"
+    "meteor-funtime-helper.mixins.json"
   ],
   "custom": {
     "meteor-client:color": "225,25,25",

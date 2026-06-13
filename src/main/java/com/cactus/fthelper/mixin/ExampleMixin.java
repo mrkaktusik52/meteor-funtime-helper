@@ -1,6 +1,6 @@
-package com.example.addon.mixin;
+package com.cactus.fthelper.mixin;
 
-import com.example.addon.AddonTemplate;
+import com.cactus.fthelper.AddonTemplate;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.RunArgs;
 import org.spongepowered.asm.mixin.Mixin;
