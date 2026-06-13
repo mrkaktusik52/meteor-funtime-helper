@@ -2,8 +2,8 @@
   "schemaVersion": 1,
   "id": "meteor-funtime-helper",
   "version": "${version}",
-  "name": "Addon Template",
-  "description": " An addon for the Meteor Client with simplifications for FunTime",
+  "name": "FunTime Helper",
+  "description": "An addon for the Meteor Client with simplifications for FunTime",
   "authors": [
     "MrKaktusik_52"
   ],
@@ -14,7 +14,7 @@
   "environment": "client",
   "entrypoints": {
     "meteor": [
-      "com.cactus.fthelper.AddonTemplate"
+      "com.cactus.fthelper.FuntimeHelper"
     ]
   },
   "mixins": [

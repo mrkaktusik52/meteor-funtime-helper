@@ -1,6 +1,6 @@
 package com.cactus.fthelper.mixin;
 
-import com.cactus.fthelper.AddonTemplate;
+import com.cactus.fthelper.FuntimeHelper;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.RunArgs;
 import org.spongepowered.asm.mixin.Mixin;
@@ -26,6 +26,6 @@ public abstract class ExampleMixin {
      */
     @Inject(method = "<init>", at = @At("TAIL"))
     private void onGameLoaded(RunArgs args, CallbackInfo ci) {
-        AddonTemplate.LOG.info("Hello from ExampleMixin!");
+        FuntimeHelper.LOG.info("Hello from ExampleMixin!");
     }
 }
