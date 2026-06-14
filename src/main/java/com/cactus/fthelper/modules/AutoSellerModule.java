@@ -57,7 +57,7 @@ public class AutoSellerModule extends Module {
     );
 
     // State machine
-    private enum State { IDLE, WAITING, SWAPPING, SENDING, RESTORING }
+    private enum State { IDLE, WAITING, SWAPPING, RESTORING }
 
     private State state = State.IDLE;
     private int tickCounter = 0;
@@ -102,25 +102,32 @@ public class AutoSellerModule extends Module {
             ItemStack stack = mc.player.getInventory().getStack(i);
             if (stack.isEmpty()) continue;
 
-            String displayName = stack.getName().getString().toLowerCase();
-            if (displayName.contains(target)) return i;
+            if (stack.getName().getString().toLowerCase().contains(target)) return i;
         }
         return -1;
     }
 
-    // Listens for purchase confirmation in chat
     @EventHandler
     private void onReceivePacket(PacketEvent.Receive event) {
         if (!(event.packet instanceof GameMessageS2CPacket packet)) return;
         String message = packet.content().getString().toLowerCase();
 
+        // Item was bought — start sell sequence again
         if (message.contains("у вас купили") && message.contains("на /ah")) {
             if (state != State.IDLE) return;
+            info("Item bought! Re-listing...");
             startSellSequence();
+        }
+
+        // Server rejected price — retry immediately
+        if (message.contains("слишком дорого") && message.contains("ещё раз")) {
+            warning("Price rejected by server, retrying...");
+            ChatUtils.sendPlayerMsg("/ah sell " + price.get());
         }
     }
 
     // State machine: WAITING -> SWAPPING -> RESTORING -> IDLE
+    @SuppressWarnings("unused")
     @EventHandler
     private void onTick(TickEvent.Post event) {
         if (mc.player == null || state == State.IDLE) return;
@@ -146,7 +153,7 @@ public class AutoSellerModule extends Module {
                 if (foundSlot < 9) {
                     InvUtils.swap(foundSlot, false);
                 } else {
-                    // Move from main inventory to hotbar
+                    // Move from main inventory to current hotbar slot
                     InvUtils.move().from(foundSlot).toHotbar(savedSlot);
                 }
 
@@ -173,6 +180,7 @@ public class AutoSellerModule extends Module {
                     InvUtils.swap(savedSlot, false);
                 }
 
+                mc.player.playSound(SoundEvents.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0f, 1.0f);
                 info("Sell complete.");
                 resetState();
             }
