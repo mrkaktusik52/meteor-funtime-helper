@@ -41,7 +41,7 @@ public class AutoSellerModule extends Module {
 
     private final Setting<Integer> swapDelay = sgGeneral.add(new IntSetting.Builder()
         .name("swap-delay")
-        .description("Ticks to wait after swapping item to hand before sending /sell")
+        .description("Ticks to wait after swapping item to hand before sending /ah sell")
         .defaultValue(5)
         .min(1)
         .sliderMax(20)
@@ -152,12 +152,12 @@ public class AutoSellerModule extends Module {
                 tickCounter = 0;
             }
 
-            // Wait for server to register the held item, then send /sell
+            // Wait for server to register the held item, then send /ah sell
             case SWAPPING -> {
                 if (tickCounter < swapDelay.get()) return;
 
-                ChatUtils.sendPlayerMsg("/sell " + price.get());
-                info("Sent: /sell %d", price.get());
+                ChatUtils.sendPlayerMsg("/ah sell " + price.get());
+                info("Sent: /ah sell %d", price.get());
 
                 state = State.RESTORING;
                 tickCounter = 0;

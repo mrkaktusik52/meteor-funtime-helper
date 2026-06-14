@@ -1,6 +1,7 @@
 package com.cactus.fthelper;
 
 
+import com.cactus.fthelper.modules.AntiAFKPlusModule;
 import com.cactus.fthelper.modules.AutoSellerModule;
 import com.mojang.logging.LogUtils;
 import meteordevelopment.meteorclient.addons.GithubRepo;
@@ -19,6 +20,7 @@ public class FuntimeHelper extends MeteorAddon {
         LOG.info("Initializing FT Helper");
 
         Modules.get().add(new AutoSellerModule());
+        Modules.get().add(new AntiAFKPlusModule());
     }
 
 
