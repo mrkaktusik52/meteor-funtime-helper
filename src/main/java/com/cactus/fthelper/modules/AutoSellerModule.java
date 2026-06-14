@@ -57,7 +57,7 @@ public class AutoSellerModule extends Module {
     );
 
     // State machine
-    private enum State { IDLE, WAITING, SWAPPING, RESTORING }
+    enum State { IDLE, WAITING, SWAPPING, RESTORING }
 
     private State state = State.IDLE;
     private int tickCounter = 0;
