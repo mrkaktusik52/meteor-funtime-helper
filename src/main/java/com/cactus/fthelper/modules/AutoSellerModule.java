@@ -10,6 +10,7 @@ import meteordevelopment.meteorclient.utils.player.InvUtils;
 import meteordevelopment.orbit.EventHandler;
 import net.minecraft.item.ItemStack;
 import net.minecraft.network.packet.s2c.play.GameMessageS2CPacket;
+import net.minecraft.sound.SoundEvents;
 
 public class AutoSellerModule extends Module {
     private final SettingGroup sgGeneral = this.settings.getDefaultGroup();
@@ -34,7 +35,7 @@ public class AutoSellerModule extends Module {
         .name("delay-before-sell")
         .description("Ticks to wait after chat trigger before starting")
         .defaultValue(10)
-        .min(10)
+        .min(5)
         .sliderMax(200)
         .build()
     );
@@ -134,6 +135,7 @@ public class AutoSellerModule extends Module {
                 foundSlot = findItemInInventory();
                 if (foundSlot == -1) {
                     warning("Item \"%s\" not found in inventory!", itemName.get());
+                    mc.player.playSound(SoundEvents.ENTITY_ITEM_BREAK.value(), 1.0f, 1.0f);
                     resetState();
                     return;
                 }
